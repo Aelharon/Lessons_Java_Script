@@ -1,0 +1,26 @@
+body {
+	background-color: #dadada;
+}
+
+p {
+	font-size: 1.25rem;
+	margin: 0.625rem;
+
+}
+
+.task-text {
+	font-weight: 600;
+}
+
+.link-back {
+	font-weight: 600;
+	font-size: 1.25rem;
+}
+
+.list {}
+
+.list__item {
+	padding-block: 0.625rem;
+	font-size: 1.25rem;
+
+}
