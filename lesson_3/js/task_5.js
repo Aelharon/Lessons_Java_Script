@@ -10,15 +10,16 @@
 const categoryDriver = prompt('Введіть категорію водія A, B або C', 'A')
 let result
 
-if (categoryDriver === 'A' || categoryDriver === 'a')
+if (categoryDriver.toUpperCase() === 'A')
 	result = 'Дозволяється керувати мотоциклом'
-else if (categoryDriver === 'B' || categoryDriver === 'b')
+else if (categoryDriver.toUpperCase() === 'B')
 	result = 'Дозволяється керувати легковим автомобілем'
-else if (categoryDriver === 'C' || categoryDriver === 'c')
+else if (categoryDriver.toUpperCase() === 'C')
 	result = 'Дозволяється керувати вантажівкою'
 else
 	result = 'Не вірно введені данні'
 
+console.log(`${categoryDriver}`);
 document.write(`<p> ${result} </p>`)
 
 

@@ -19,12 +19,12 @@ const girlNumberSweets = parseInt(prompt(`Введіть кількість цу
 const boyNumberSweets = parseInt(prompt(`Введіть кількість цукерок ${nameOfBoy}`, '5'))
 let result
 
-// Крок 2. Обчислення та виведення результату
+// Крок 2. Обчислення
 if (girlNumberSweets > boyNumberSweets)
-	result = `${nameOfGirl} має більше цукерок `
+	result = `${nameOfGirl} має більше цукерок`
 else if (boyNumberSweets > girlNumberSweets)
 	result = `${nameOfBoy} має більше цукерок`
-else if (girlNumberSweets == boyNumberSweets)
+else if (girlNumberSweets === boyNumberSweets)
 	result = `${nameOfGirl} та ${nameOfBoy} мають однакову кількість цукерок`
 
 // Крок 3. виведення результату
