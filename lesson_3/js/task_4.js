@@ -12,7 +12,6 @@
 const howManyYears = parseInt(prompt('Введіть кількість повних років', (5)))
 let result
 
-
 if (howManyYears <= 6)
 	result = 'Дитина'
 else if (howManyYears <= 18)
@@ -21,8 +20,10 @@ else if (howManyYears <= 23)
 	result = 'Cтудент'
 else if (howManyYears <= 59)
 	result = 'Працівник'
-else
+else if (howManyYears >= 60)
 	result = 'Пенсіонер'
+result ??= 'Дані не введені'
+
 
 document.write(`<p>${result}</p>`)
 

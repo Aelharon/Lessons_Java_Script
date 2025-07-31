@@ -22,10 +22,11 @@ let result
 // Крок 2. Обчислення
 if (girlNumberSweets > boyNumberSweets)
 	result = `${nameOfGirl} має більше цукерок`
-else if (boyNumberSweets > girlNumberSweets)
-	result = `${nameOfBoy} має більше цукерок`
 else if (girlNumberSweets === boyNumberSweets)
 	result = `${nameOfGirl} та ${nameOfBoy} мають однакову кількість цукерок`
+else
+	result = `${nameOfBoy} має більше цукерок`
+
 
 // Крок 3. виведення результату
 document.write(`<p> ${result} </p>`)
