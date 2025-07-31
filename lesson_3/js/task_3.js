@@ -7,9 +7,9 @@
 // Спробуйте вгадати число за 2 спроби.
 
 
-const minNumber = 1, maxNumber = 5
+// const minNumber = 1, maxNumber = 5
 // let randomNumber = minNumber + Math.floor(Math.random() * (maxNumber - minNumber + 1))
-let randomNumber = minNumber + Math.floor(Math.random() * (5))
+let randomNumber = 1 + Math.floor(Math.random() * (5))
 console.log(`${randomNumber}`);
 let result
 
