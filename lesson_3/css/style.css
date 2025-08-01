@@ -2,6 +2,10 @@ body {
 	background-color: #dadada;
 }
 
+.go-home {
+	font-size: 1.25rem;
+}
+
 p {
 	font-size: 1.25rem;
 	margin: 0.625rem;

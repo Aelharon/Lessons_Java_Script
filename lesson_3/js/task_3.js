@@ -19,13 +19,13 @@ let attemptGuessNumber = parseInt(prompt(`Введіть перше число`,
 
 if (attemptGuessNumber === randomNumber)
 	result = 'Вгадав'
-else
+else {
 	attemptGuessNumber = parseInt(prompt(`Введіть друге число`, '0'))
-if (attemptGuessNumber == randomNumber)
-	result = 'Вгадав'
-else
-	result = `Не вгадав, число "${randomNumber}"`
-
+	if (attemptGuessNumber == randomNumber)
+		result = 'Вгадав'
+	else
+		result = `Не вгадав, число "${randomNumber}"`
+}
 document.write(`<p>${result}</p>`)
 
 
