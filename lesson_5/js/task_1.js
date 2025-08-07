@@ -12,18 +12,44 @@
 if (confirm('Почати тестування?')) {
 
 	let pairedNum = 0
-	let unpairedNum = 0
 
 	for (let i = 0; i < 100; i++) {
-		let randomNum = 1 + Math.floor(Math.random() * (1000))
-		let valueNum = Math.floor(randomNum % 2)
-		if (valueNum) {
-			unpairedNum += 1
-		}
-		else
-			pairedNum += 1
+		let randomNum = 1 + Math.floor(Math.random() * 1000)
+		if (randomNum % 2 !== 0) 
+			pairedNum++
 	}
+	
+	const unpairedNum = 100-pairedNum
 	document.write(`<p> Парних чисел ${pairedNum}</p>
 						<p>Непарних чисел ${unpairedNum}</p>`)
 
 }
+// =======================================================================================
+	// let pairedNum = 0
+	// let unpairedNum = 0
+
+	// for (let i = 0; i < 100; i++) {
+	// 	let randomNum = 1 + Math.floor(Math.random() * 1000)
+	// 	if (randomNum % 2 !== 0) 
+	// 		unpairedNum++
+	// 	else
+	// 		pairedNum++
+	// }
+	// document.write(`<p> Парних чисел ${pairedNum}</p>
+	// 					<p>Непарних чисел ${unpairedNum}</p>`)
+// =======================================================================================
+// let pairedNum = 0
+// let unpairedNum = 0
+
+// for (let i = 0; i < 100; i++) {
+// 	let randomNum = 1 + Math.floor(Math.random() * 1000)
+// 	let valueNum = (randomNum % 2)
+// 	console.log(valueNum);
+// 	if (valueNum !== 0) {
+// 		unpairedNum += 1
+// 	}
+// 	else
+// 		pairedNum += 1
+// }
+// document.write(`<p> Парних чисел ${pairedNum}</p>
+// 					<p>Непарних чисел ${unpairedNum}</p>`)
