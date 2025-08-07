@@ -15,6 +15,7 @@ if (confirm('Почати тестування?')) {
 
 	const userNum = parseInt(prompt('введіть кількість чисел', '3'))
 
+	document.write('<ul>')
 	for (let i = 1; i <= userNum; i++) {
 		let randomNum = 1 + Math.floor(Math.random() * 100)
 		document.write(`
@@ -22,6 +23,6 @@ if (confirm('Почати тестування?')) {
 ${randomNum}
 		</li>`)
 	}
-
+	document.write('</ul>')
 
 }

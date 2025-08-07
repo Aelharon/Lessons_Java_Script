@@ -11,15 +11,14 @@
 
 if (confirm('Почати тестування?')) {
 
-	let row = '<tr>'
-
-	for (let j = 1; j <= 3; j++) {
-		row += '<tr>'
-		for (let i = 1; i <= 7; i++) {
-			row += `<td>${i}</td>`
+	document.write('<table>')
+	for (let row = 1; row <= 3; row++) {
+		document.write('<tr>')
+		for (let cell = 1; cell <= 7; cell++) {
+			document.write(`<td>${cell}</td>`)
 		}
-		row += '</tr>'
+		document.write('</tr>')
 	}
-	document.write(row)
+	document.write('</table>')
 
 }
