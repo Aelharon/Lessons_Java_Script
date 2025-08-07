@@ -42,7 +42,13 @@ p {
 
 table {
 	/* border-collapse: collapse; */
-	border: 1px solid black;
+	border: 2px solid black;
+	display: inline-flex;
+
+}
+
+table:not(:last-child) {
+	margin: 1.25rem;
 }
 
 th {

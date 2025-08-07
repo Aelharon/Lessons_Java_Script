@@ -9,21 +9,21 @@
 // Задача №8
 // Вивести таблицю
 
-// if (confirm('Почати тестування?')) {
+if (confirm('Почати тестування?')) {
 
-let cellNum = 1
-document.write('<table>')
-for (let i = 1; i <= 3; i++) {
-	document.write('<tr>')
-	for (let j = 1; j <= 3; j++) {
-		document.write(`<td>${cellNum++} </td>`)
+
+	let cellNum = 1
+	document.write('<table>')
+	for (let i = 1; i <= 3; i++) {
+		document.write('<tr>')
+		for (let j = 1; j <= 3; j++) {
+			document.write(`<td>${cellNum++} </td>`)
+		}
+		document.write('</tr>')
 	}
-	document.write('</tr>')
+	document.write('</table>')
+
+
+
+
 }
-document.write('</table>')
-
-
-
-
-
-// }
