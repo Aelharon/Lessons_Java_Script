@@ -10,7 +10,7 @@
 // З клавіатури поступово вводяться символи поки не буде введено символ «а».
 // Вивести рядок символів у зворотному порядку.
 
-// if (confirm('Почати тестування?')) {
+ if (confirm('Почати тестування?')) {
 
 let sumSymbol = ''
 let userSymbol = ''
@@ -30,5 +30,6 @@ while (userSymbol !== 'a') {
 document.write(sumSymbol)
 document.write('</div><br>')
 
-// document.write('</p></div>')
-// }
+
+}
+
