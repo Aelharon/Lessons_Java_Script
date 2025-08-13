@@ -14,19 +14,26 @@
 
 if (confirm('Почати тестування?')) {
 
-
 	const getCentimeterToIncn = centimeter => centimeter / 2.54
 	const getKgToPound = kg => kg * 2.205
 	const geKilometerToMile = Kilometer => Kilometer / 1.609
 
-	const userAnswerCentimeter = parseInt(prompt('Введіть кількість сантиметрів', '50'))
-	const userAnswerKg = parseInt(prompt('Введіть кількість кілограмів', '10'))
-	const userAnswerKilometer = parseInt(prompt('Введіть кількість кілометрів', '50'))
+	const userAnswerConvert = parseInt(prompt('Яку величину перевести, введіть номер ?\n 1 - Сантиметри у дюйми\n 2 - Кілограми у фунти\n 3 - Кілометри у милі', '1'))
 
-	document.write(`
-	${userAnswerCentimeter} сантиметрів = ${getCentimeterToIncn(userAnswerCentimeter)} дюймів <br>
-	${userAnswerKg} кілограмів = ${getKgToPound(userAnswerKg)} фунтів <br>
-	${userAnswerKilometer} кілометрів = ${geKilometerToMile(userAnswerKilometer)} миль <br>
-	`)
+	const userAnswerNumber = parseInt(prompt('Введіть кількість одиниць', '50'))
+
+	let res
+	switch (userAnswerConvert) {
+		case 1: res = `${userAnswerNumber} сантиметрів = ${getCentimeterToIncn(userAnswerNumber)} дюймів <br>`
+			break
+		case 2: res = `${userAnswerNumber} кілограмів = ${getKgToPound(userAnswerNumber)} фунтів <br>`
+			break
+		case 3: res = `${userAnswerNumber} кілометрів = ${geKilometerToMile(userAnswerNumber)} миль <br>`
+			break
+		default:
+			throw new Error("Помилка");
+	}
+
+	document.write(res)
 
 }
