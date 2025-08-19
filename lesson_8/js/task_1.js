@@ -14,6 +14,9 @@
 if (confirm('Почати тестування?')) {
 
 	let arrEstimates = [1, 4, 5, 4, 5, 5]
+
+	document.write(`Дано оцінки: <br> ${arrEstimates} <hr>`)
+
 	let sum = 0
 
 	for (let i = 0; i < arrEstimates.length; i++) {
