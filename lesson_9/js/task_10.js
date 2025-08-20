@@ -18,13 +18,18 @@ if (confirm('Почати тестування?')) {
 	//======================================================================
 	document.write(`Є масив цін ${prices} <hr>`)
 	document.write(`<p> Результат: </p>`)
-	let taxArray = []
+
 	let sumTax = 0
+
+	//======================================================================
+	// .map
+	const taxArray = prices.map((price) => price * 0.2)
 	//======================================================================
 	// ForOf
-	for (const productPrice of prices) {
-		taxArray.push(productPrice * 0.2)
-	}
+	// let taxArray = []
+	// for (const productPrice of prices) {
+	// 	taxArray.push(productPrice * 0.2)
+	// }
 	//======================================================================
 	for (const productTax of taxArray) {
 		sumTax += productTax

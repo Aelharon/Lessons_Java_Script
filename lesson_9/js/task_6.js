@@ -12,18 +12,25 @@
 if (confirm('Почати тестування?')) {
 
 	const someArray = [5, 20, -12, -20, 8, 10, -7, 6, -3]
-
+	//======================================================================
 	document.write(`Є масив  ${someArray} <hr>`)
 	document.write(`<p> Результат: </p>`)
-
 	const firstElement = someArray[0]
-	for (const element of someArray) {
+	//======================================================================
+	// Цикл ForEach
+	someArray.forEach((element, index, baseArr) => {
 		if (firstElement < element) {
-			let productElement = element * 2
-			document.write(`${productElement}<br>`)
+			baseArr[index] *= 2
 		}
-	}
-
-
+	});
+	//======================================================================
+	// Звичайний цикл
+	// for (let i = 0; i < someArray.length; i++) {
+	// 	if (firstElement < someArray[i]) {
+	// 		someArray[i] *= 2
+	// 	}
+	// }
+	//======================================================================
+	document.write(`Змінений масив ${someArray} <br>`)
 }
 

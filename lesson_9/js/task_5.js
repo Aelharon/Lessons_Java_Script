@@ -18,7 +18,7 @@ if (confirm('Почати тестування?')) {
 	let product = 1
 	for (const element of someArray) {
 		if (element > 0) {
-			product = product * element
+			product *= element
 		}
 	}
 	document.write(`Добуток додатних елементів = ${product} <br>`)
