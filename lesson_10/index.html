@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zxx">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="css/style.css">
+		<title>Lesson JS №10</title>
+	</head>
+	<body>
+		<a class="go-home" href="../index.html">На головну</a>
+		<h1>Задачі</h1>
+
+		<script>
+
+const prices = [500, 1200, 800, 2500, 1500, 950, 3000];
+document.write(`<h2 style="color: blue"> Дано масив даних ${prices} </h2>`)
+
+//===================================================
+document.write(`<p class="task-text">Задача 1:
+Сформувати новий масив, у якому є тільки ті, що більші за 1000 грн.
+</p>`)
+
+let pricesMre1000 = prices.filter((price) => price > 1000
+)
+document.write(`${pricesMre1000}`)
+
+document.write(`<hr>`)
+//===================================================
+document.write(`<p class="task-text">Задача 2:
+Сформувати новий масив, у якому є номери тільки тих, що більші за 1000 грн.
+</p>`)
+
+let indexNumbersMore1000 = []
+
+function getIndexNumbersMore1000() {
+	prices.forEach((element, index) => {
+		if (element > 1000)
+			return indexNumbersMore1000.push(index)
+	})
+}
+getIndexNumbersMore1000(prices)
+document.write(indexNumbersMore1000)
+
+document.write(`<hr>`)
+
+//=========================================================
+document.write(`<p class="task-text">Задача 3:
+Сформувати список з тих цін, які більші за попереднє значення
+</p>`)
+
+function getPricesList(arr) {
+	let res = '<ul>'
+prices.forEach((price, index) => {
+		if (prices[index]<prices[index+1]) {
+			res += `<li> ${prices[index+1]} </li>`
+	}
+});
+res +='</ul>'
+	return res
+	}
+
+const resultPricesList = getPricesList(prices)
+document.write(resultPricesList)
+
+document.write(`<hr>`)
+//=========================================================
+document.write(`<p class="task-text">Задача 4:
+Сформувати новий масив, що міститиме значення цін у 
+відсотках стосовно максимального
+</p>`)
+
+// Находження максимальної ціни
+const maxPrice = prices.reduce(
+(prevNumber, price, ind, baseArr) => prevNumber < price ? price : prevNumber)
+// --------------------------------------
+// Находження максимальної ціни за допомогою Math
+// const maxPrice = Math.max(...prices)
+// --------------------------------------
+const arrPriceRelativeMaxPrice = prices.map(price => (price / maxPrice * 100).toFixed(2))
+
+document.write(`Масив цін у відсотках стосовно максимального: <br> ${arrPriceRelativeMaxPrice}`)
+
+document.write(`<hr>`)
+//=========================================================
+document.write(`<p class="task-text">Задача 5:
+Підрахувати кількість змін цін
+</p>`)
+
+//-----------------------------------------------------------------------------
+// Якщо порівнювати із сусідніми цінами
+const counterChangePrices = prices.reduce((startNum,price,index,baseArr) => 
+index>0 && price!== baseArr[index-1]?++startNum:startNum, 0
+)
+document.write(`Ціни змінювались ${counterChangePrices} разів`)
+//------------------------------------------------------------------------------
+//Інша умова, якщо була зміна цін у масиві
+// // Масив зі змінами цін
+// const newPrices = prices.map(price => price > 1000 ? price * 0.8 : price
+// )
+// // Функція яка повертає кількість змін
+// function getCounterChangePrices(prices, newPrices) {
+// 	let sum = 0
+// 	for (let i = 0; i < prices.length; i++) {
+// 		if (prices[i] === newPrices[i])
+// 			sum++
+// 	}
+// 	return sum
+// }
+// const count = getCounterChangePrices(prices, newPrices)
+// document.write(`Ціни змінювались ${count} разів`)
+
+document.write(`<hr>`)
+//=========================================================
+document.write(`<p class="task-text">Задача 6:
+Визначити, чи є ціна, що менше 1000
+</p>`)
+
+if(prices.some((price)=>price>1000))
+document.write(`Є ціна більша за 1000`)
+else
+document.write(`Немає ціни більше за 1000`)
+
+
+document.write(`<hr>`)
+//=========================================================
+document.write(`<p class="task-text">Задача 7:
+Визначати, чи усі ціни більше за 1000
+</p>`)
+
+if(prices.every((price)=>price>1000))
+	document.write(`Усі ціни більше за 1000`)
+else 
+	document.write('No')
+//-----------------------------------------------------------------------------
+// const everyPriceOver1000 = prices.every(price => price>1000)
+// if (everyPriceOver1000 === true) {
+// 	document.write(`Усі ціни більше за 1000`)
+// } else {
+// 	document.write('Є ціни менше за 1000')
+// }
+//-----------------------------------------------------------------------------
+document.write(`<hr>`)
+//=========================================================
+document.write(`<p class="task-text">Задача 8:
+Підрахувати кількість цін, що більше за 1000
+</p>`)
+
+const countPricesOver1000 = prices.reduce((startCount, price) =>
+	price > 1000 ? ++startCount : startCount, 0
+)
+
+document.write(`Кількість цін більше за 1000 = ${countPricesOver1000}`)
+
+document.write(`<hr>`)
+//=========================================================
+document.write(`<p class="task-text">Задача 9:
+Підрахувати суму цін, що більше за 1000
+</p>`)
+
+const sumPriseOver1000 = prices.reduce((sum, price) =>
+	price >1000 ? sum + price : sum, 0
+)
+document.write(`Сума цін більше 1000 = ${sumPriseOver1000}`)
+
+document.write(`<hr>`)
+//=========================================================
+document.write(`<p class="task-text">Задача 10:
+Знайти першу ціну, що більше за 1000
+</p>`)
+
+const firstPriceMore1000 = prices.find(price => price > 1000)
+document.write(`Перша ціна більше 1000 - ${firstPriceMore1000}`)
+
+document.write(`<hr>`)
+//=========================================================
+document.write(`<p class="task-text">Задача 11:
+Знайти індекс першої ціни, що більше за 1000
+</p>`)
+
+const indexFirstPriceMore1000 = prices.findIndex((price,index,baseArr)=>price>1000)
+document.write(`Перша ціна сумою більше 1000 має індекс - ${indexFirstPriceMore1000}`)
+
+document.write(`<hr>`)
+//=========================================================
+document.write(`<p class="task-text">Задача 12:
+Знайти останню ціну, що більше за 1000
+</p>`)
+
+const lastPriceMore1000 = prices.findLast(price=>price>1000)
+document.write(`Остання ціна більше 1000 - ${lastPriceMore1000}`)
+
+document.write(`<hr>`)
+//=========================================================
+document.write(`<p class="task-text">Задача 13:
+Знайти індекс останньої ціни, що більше за 1000
+</p>`)
+
+const indexLastPriceMore1000 = prices.findLastIndex(price=>price>1000)
+document.write(`Остання ціна сумою більше 1000 має індекс - ${indexLastPriceMore1000}`)
+
+document.write(`<hr>`)
+//=========================================================
+</script>
+		<script src="js/task_1.js"></script>
+	</body>
+</html>
