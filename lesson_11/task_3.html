@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="css/style.css">
+		<title>lesson_11</title>
+	</head>
+	<body>
+		<h1>Задача</h1>
+		<p class="task-text">
+			Морський бій. Випадковим чином на двовимірному полі розміром 6*6
+			розташовується 5 кораблів. <br>
+			Користувач стріляє вказуючи координати.<br>
+			Гра продовжується поки не потоплено усі кораблі або у користувача не
+			закінчаться
+			снаряди.</p>
+		<script>
+if (confirm('Почати тестування?')) {
+let field = [
+	[1, 0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0, 1],
+	[0, 0, 0, 1, 0, 0],
+	[0, 0, 0, 0, 0, 0],
+	[0, 1, 0, 0, 0, 0],
+];
+// --------------------------------------------------------------------------
+const hits = parseInt(prompt('Введіть кількість пострілів','10'))
+let goodShots = 0
+for (let i = 0; i < hits; i++) {
+	const lineY = parseInt(prompt('Введіть координати по вертикалі від 0 до 5','4'))
+	const lineX = parseInt(prompt('Введіть координати по горизонталі від 0 до 5','5'))
+	if (field[lineY][lineX] === 1) {alert('Влучив !!!'), ++goodShots}
+	else alert('Мимо')
+	if (goodShots === 5) {break}
+}
+goodShots===5 ? document.write(`Вітання, ви потопили всі 5 кораблів <hr>`) : document.write(`Ви програли <hr>`)
+
+field.forEach(row => { document.write(`${row} <br>`)
+});
+}
+// ==============================================================================
+		</script>
+		<!-- <script src="js/task_1.js"></script> -->
+		<br>
+		<a href="index.html" class="link-back">
+			Повернутися
+		</a>
+	</body>
+</html>

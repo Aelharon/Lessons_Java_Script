@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="css/style.css">
+		<title>lesson_11</title>
+	</head>
+	<body>
+		<h1>Задача №1</h1>
+		<p class="task-text">
+			Дано інформацію про прибуток К магазинів протягом тижня. Знайти :</p>
+		<script>
+
+let profits = [
+   [35, 15, 44, 305, 22, 18, 50], // магазин 1, 7 днів
+   [14, 8, 90, 53, 40, 33, 27],  // магазин 2
+   [25, 12, 34, 72, 55, 41, 206], // магазин 3
+   [65, 24, 77, 26, 48, 36, 29], // магазин 4
+   [9, 254, 54, 37, 21, 17, 13],  // магазин 5
+   [31, 85, 19, 28, 60, 401, 38], // магазин 6
+];
+// --------------------------------------------------------------------------
+	document.write(`<p>1. Загальний прибуток кожного масиву за тиждень;</p>`)
+	
+	for (const shop of profits) {
+		const sumShop = shop.reduce((sum, day) => sum+=day,0)
+	document.write(`Прибуток за тиждень ${sumShop} <br>`)
+	}
+// ==============================================================================
+	document.write(`<p>2. Загальний прибуток усіх магазинів по дням 
+		(загальний прибуток усіх магазинів за понеділок, за вівторок, і т.д.);</p>`)
+
+		for (let days = 1; days <= 7; days++) {
+			let sum = 0
+			for (const shop of profits) {
+				for (let day = days-1; day < days; day++) {
+					sum += shop[day]
+				}
+			}
+			let nameDay = ""
+			switch (days) {
+				case 1: nameDay = "Понеділок"
+					break;
+				case 2: nameDay = "Вівторок"
+					break;
+				case 3: nameDay = "Середа"
+					break;
+				case 4: nameDay = "Четвер"
+					break;
+				case 5: nameDay = "П'ятниця"
+					break;
+				case 6: nameDay = "Субота"
+					break;
+				case 7: nameDay = "Неділя"
+					break;
+			}
+			document.write(`Загальний прибуток усіх магазинів за ${nameDay} = ${sum} <br>`)
+		}
+// ==============================================================================
+	document.write(`<p>3. Загальний прибуток за робочі дні</p>`)
+		let sumWorksDays = 0
+		for (shop of profits) {
+			for (let day = 0; day < 5; day++) {
+				sumWorksDays += shop[day]
+			}
+		}
+		document.write(`Загальний прибуток за робочі дні = ${sumWorksDays}`)
+// ==============================================================================
+document.write(`<p>4. Загальний прибуток за вихідні дні</p>`)
+		let sumWeekendDays = 0
+		for (shop of profits) {
+			for (let day = 5; day <= 6; day++) {
+				sumWeekendDays += shop[day]
+			}
+		}
+		document.write(`Загальний прибуток за вихідні дні = ${sumWeekendDays}`)
+// ==============================================================================
+document.write(`<p>5. Максимальний прибуток за середу</p>`)
+		let maxSumWednesday = -Infinity
+		for (shop of profits) {
+			if (shop[2]>maxSumWednesday) {
+				maxSumWednesday=shop[2]
+			}
+		}
+		document.write(`максимальний прибуток за середу = ${maxSumWednesday}`)
+// ==============================================================================
+document.write(`<p>6. Cформувати загальний список (одновимірний масив) зі значенням, 
+	які що більші за 200</p>`)
+	
+		const arrayMore200 = profits.flat(2).filter((day) => day>200)
+		document.write(`Одновимірний масив зі значенням, більші за 200 <br>${arrayMore200}`)
+// ==============================================================================
+document.write(`<p>7. Відсортувати кожен тиждень за зростанням</p>`)
+
+function weekRow(profits) {
+		for (const shop of profits) {
+			shop.sort((a,b) => a - b)
+			document.write(`${shop} <br>`)
+		}
+}
+weekRow(profits)
+// ==============================================================================
+document.write(`<p>8. Відсортувати тижні (рядки) за спаданням максимального елемента 
+	у цьому тижні (рядку), тобто при порівнянні рядків потрібно порівнювати максимальні 
+	елементи у кожному з цих рядків</p>`)
+
+function rowsDescendingMaxElement (profits) {
+for (const day of profits) {day.sort((a,b) => b - a)}
+profits.sort((a,b) => Math.max(...b) - Math.max(...a))
+result = profits.forEach(row => {document.write(`${row}<br>`)
+});
+}
+rowsDescendingMaxElement(profits)
+
+// ==============================================================================
+document.write(`<p>9. Упорядкувати тижні (рядки) за спаданням суми елементів 
+	у рядку (тобто при порівнянні двох рядків треба знайти суму кожного 
+	з рядків і порівнювати ці суми, на основі цих сум буде зрозуміло, 
+	який з елементів повинен іти раніше).</p>`)
+	function getWeeksDecliningSum (profits) {
+		profits.sort((a,b)=> a.reduce((prevEl,el)=>(prevEl+el)) - b.reduce((prevEl,el)=>(prevEl+el)))
+		profits.forEach(row => {document.write(`${row}<br>`)});
+	}
+getWeeksDecliningSum (profits)
+
+// ==============================================================================
+		</script>
+		<!-- <script src="js/task_1.js"></script> -->
+		<br>
+		<a href="index.html" class="link-back">
+			Повернутися
+		</a>
+	</body>
+</html>
