@@ -7,7 +7,7 @@
 		<title>lesson_11</title>
 	</head>
 	<body>
-		<h1>Задача №2</h1>
+		<h1>Задача №1</h1>
 		<p class="task-text">
 			Дано інформацію про прибуток К магазинів протягом тижня. Знайти :</p>
 		<script>
@@ -104,13 +104,24 @@ weekRow(profits)
 document.write(`<p>8. Відсортувати тижні (рядки) за спаданням максимального елемента 
 	у цьому тижні (рядку), тобто при порівнянні рядків потрібно порівнювати максимальні 
 	елементи у кожному з цих рядків</p>`)
-
-function rowsDescendingMaxElement (profits) {
-for (const day of profits) {day.sort((a,b) => b - a)}
-profits.sort((a,b) => Math.max(...b) - Math.max(...a))
-result = profits.forEach(row => {document.write(`${row}<br>`)
-});
+// Варіант 2 вірний- 02.09.2025
+function rowsDescendingMaxElement (profits){
+//Додаємо максимальній елемент в кінець масиву(строки)
+profits.forEach(row => row.push(Math.max(...row)))
+// Сортуємо
+profits.sort((row1,row2) => row2.at(-1) - row1.at(-1))
+//Видаляємо максимальній елемент з кінця масиву(строки)
+profits.forEach(row => {row.pop()})
+// виводимо результат
+profits.forEach(row => {document.write(`${row}<br>`)});
 }
+//варіант 1 важкий для обробки----------------------------------------
+// function rowsDescendingMaxElement (profits) {
+// profits.sort((a,b) => Math.max(...b) - Math.max(...a))
+// profits.forEach(row => {document.write(`${row}<br>`)
+// });
+// }
+//------------------------------------------------------------------
 rowsDescendingMaxElement(profits)
 
 // ==============================================================================
@@ -118,10 +129,21 @@ document.write(`<p>9. Упорядкувати тижні (рядки) за сп
 	у рядку (тобто при порівнянні двох рядків треба знайти суму кожного 
 	з рядків і порівнювати ці суми, на основі цих сум буде зрозуміло, 
 	який з елементів повинен іти раніше).</p>`)
-	function getWeeksDecliningSum (profits) {
-		profits.sort((a,b)=> a.reduce((prevEl,el)=>(prevEl+el)) - b.reduce((prevEl,el)=>(prevEl+el)))
-		profits.forEach(row => {document.write(`${row}<br>`)});
-	}
+// Варіант 2 вірний- 02.09.2025
+
+function getWeeksDecliningSum(profits){
+	profits.forEach(row => {row.push(row.reduce((prevSum, el)=>(prevSum+el)))});
+	profits.sort((row1,row2)=> row2.at(-1) - row1.at(-1))
+	profits.forEach(row => {row.pop()});
+	// виводимо результат
+profits.forEach(row => {document.write(`${row}<br>`)});
+}
+
+//варіант 1 важкий для обробки----------------------------------------
+	// function getWeeksDecliningSum (profits) {
+	// 	profits.sort((a,b)=> a.reduce((prevEl,el)=>(prevEl+el)) - b.reduce((prevEl,el)=>(prevEl+el)))
+	// 	profits.forEach(row => {document.write(`${row}<br>`)});
+	// }
 getWeeksDecliningSum (profits)
 
 // ==============================================================================
@@ -132,5 +154,4 @@ getWeeksDecliningSum (profits)
 			Повернутися
 		</a>
 	</body>
-
 </html>
