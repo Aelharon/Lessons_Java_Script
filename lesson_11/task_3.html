@@ -24,7 +24,7 @@
 			const row = new Array(colNumber).fill(0)
 			field.push(row)
 		}
-		for (let i = 0; i <= shipNumber; i++) {
+		for (let i = 0; i < shipNumber; i++) {
 			let r = Math.floor(Math.random()*rowNumber)
 			let c = Math.floor(Math.random()*colNumber)
 			if (field[r][c]!== 1) {
@@ -34,7 +34,7 @@
 		return field
 		}
 		field = generateGameField()
-		// field.forEach(row => { document.write(`${row} <br>`)})
+
 
 // let field = [
 // 	[1, 0, 0, 0, 0, 0],
@@ -50,7 +50,7 @@ let goodShots = 0
 for (let i = 0; i < hits; i++) {
 	const lineY = parseInt(prompt('Введіть координати по вертикалі від 0 до 5','4'))
 	const lineX = parseInt(prompt('Введіть координати по горизонталі від 0 до 5','5'))
-	if (field[lineY][lineX] === 1) {alert('Влучив !!!'), ++goodShots}
+	if (field[lineY][lineX] === 1) {alert('Влучив !!!'), ++goodShots, field[lineY][lineX]=0 }
 	else alert('Мимо')
 	if (goodShots === 5) {break}
 }
