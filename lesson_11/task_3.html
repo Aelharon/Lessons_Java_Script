@@ -16,15 +16,34 @@
 			закінчаться
 			снаряди.</p>
 		<script>
-if (confirm('Почати тестування?')) {
-let field = [
-	[1, 0, 0, 0, 0, 0],
-	[0, 0, 0, 0, 0, 0],
-	[0, 0, 0, 0, 0, 1],
-	[0, 0, 0, 1, 0, 0],
-	[0, 0, 0, 0, 0, 0],
-	[0, 1, 0, 0, 0, 0],
-];
+	if (confirm('Почати тестування?')) {
+	// Додано генерацію поля 02.09.25
+		function generateGameField(rowNumber = 6, colNumber = 6, shipNumber = 5) {
+		let field = []
+		for (let r = 0; r < rowNumber; r++) {
+			const row = new Array(colNumber).fill(0)
+			field.push(row)
+		}
+		for (let i = 0; i <= shipNumber; i++) {
+			let r = Math.floor(Math.random()*rowNumber)
+			let c = Math.floor(Math.random()*colNumber)
+			if (field[r][c]!== 1) {
+				field[r][c] = 1 
+				}
+		}
+		return field
+		}
+		field = generateGameField()
+		// field.forEach(row => { document.write(`${row} <br>`)})
+
+// let field = [
+// 	[1, 0, 0, 0, 0, 0],
+// 	[0, 0, 0, 0, 0, 0],
+// 	[0, 0, 0, 0, 0, 1],
+// 	[0, 0, 0, 1, 0, 0],
+// 	[0, 0, 1, 0, 0, 0],
+// 	[0, 1, 0, 0, 0, 0],
+// ];
 // --------------------------------------------------------------------------
 const hits = parseInt(prompt('Введіть кількість пострілів','10'))
 let goodShots = 0
@@ -48,5 +67,4 @@ field.forEach(row => { document.write(`${row} <br>`)
 			Повернутися
 		</a>
 	</body>
-
 </html>
