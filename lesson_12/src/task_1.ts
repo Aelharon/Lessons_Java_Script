@@ -1,3 +1,4 @@
+if (confirm('Почати тестування?')) {
 document.write(`Задача 1)
 Підрахувати скільки було обмінів під час сортування бульбашкою: <br>`)
 
@@ -312,3 +313,5 @@ function getSumSundayRows(arr: number[][]): string {
 	return res
 }
 document.write(`${getSumSundayRows(arrDays)}<hr>`)
+}
+
