@@ -1,4 +1,5 @@
 "use strict";
+if (confirm('Почати тестування?')) {
 document.write(`Задача 1)
 Підрахувати скільки було обмінів під час сортування бульбашкою: <br>`);
 const arr1 = Array.from({ length: 30 }, () => Math.floor(Math.random() * 100));
@@ -300,6 +301,7 @@ document.write(`${includesNameFiveSymbol} <hr>`);
 document.write(`Задача 7)
 Сформувати двовимірний масив (4*8) з номерами днів (описати окремий тип для днів). <br>
 Заповнити його випадковим чином. <br>
+
 Підрахувати для кожного рядка кількість неділь. <br>`);
 const arrDays = Array.from({ length: 4 }, () => Array.from({ length: 8 }, () => 1 + Math.floor(Math.random() * 7)));
 arrDays.forEach(row => document.write(`${row} <br>`));
@@ -312,3 +314,4 @@ function getSumSundayRows(arr) {
     return res;
 }
 document.write(`${getSumSundayRows(arrDays)}<hr>`);
+}
