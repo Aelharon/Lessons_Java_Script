@@ -1,6 +1,11 @@
 
 if (confirm('Почати тестування?')) {
 	class auto {
+		brand: string
+		sizeTank: number
+		numberLitersAvailable: number
+		numberSeats: number
+		numberPassengers: number
 		constructor(defBrand: string, defSizeTank: number, defNumberLitersAvailable: number,
 			defNumberSeats: number, defNumberPassengers: number) {
 			this.brand = defBrand,
@@ -27,7 +32,7 @@ if (confirm('Почати тестування?')) {
 				this.numberPassengers = this.numberPassengers + tempPassen
 			}
 		}
-		rmPassengers(rmPassengersNumber) {
+		rmPassengers(rmPassengersNumber: number) {
 			if (this.numberPassengers >= rmPassengersNumber) {
 				this.numberPassengers = this.numberPassengers - rmPassengersNumber
 			} else {
