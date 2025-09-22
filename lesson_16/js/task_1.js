@@ -1,5 +1,5 @@
 "use strict";
-class backpack {
+class Backpack {
     constructor(initialItems, initialWeight) {
         this._items = initialItems;
         this._weight = initialWeight;
@@ -23,7 +23,7 @@ class backpack {
     }
 }
 try {
-    let backpack1 = new backpack([], 15);
+    let backpack1 = new Backpack([], 15);
     backpack1.AddItems = 2;
     backpack1.AddItems = 4;
     backpack1.AddItems = 1;

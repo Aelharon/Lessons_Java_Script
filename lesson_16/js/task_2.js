@@ -1,6 +1,6 @@
 "use strict";
-class shop {
-    constructor(product = []) {
+class Shop {
+    constructor(product = [{}]) {
         this._revenue = 0;
         this._stock = product;
     }
@@ -19,13 +19,12 @@ class shop {
         return `наторгував на ${this._revenue} грн.<br>`;
     }
 }
-let availableProducts = new shop([
+let availableProducts = new Shop([
     { name: 'Морква', quantity: 50, price: 20 },
     { name: 'Вобла', quantity: 30, price: 30 },
     { name: 'Кавун', quantity: 300, price: 15 },
     { name: 'Маракуйя', quantity: 10, price: 75 },
 ]);
-console.log(availableProducts);
 try {
     availableProducts.SellingProduct('Вобла', 5);
     availableProducts.SellingProduct('Кавун', 15);

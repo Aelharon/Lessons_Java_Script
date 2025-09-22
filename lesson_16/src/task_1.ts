@@ -1,4 +1,4 @@
-class backpack {
+class Backpack {
 	private _weight: number
 	private _items: number[]
 	constructor(initialItems: number[], initialWeight: number) {
@@ -23,7 +23,7 @@ class backpack {
 	}
 }
 try {
-	let backpack1 = new backpack([], 15)
+	let backpack1 = new Backpack([], 15)
 	backpack1.AddItems = 2
 	backpack1.AddItems = 4
 	backpack1.AddItems = 1
