@@ -1,0 +1,85 @@
+body {
+	background-color: #dadada;
+}
+
+.go-home {
+	font-size: 1.25rem;
+}
+
+p {
+	font-size: 1.25rem;
+	margin: 0.625rem;
+
+}
+
+.task-text {
+	font-weight: 600;
+}
+
+.link-back {
+	font-weight: 600;
+	font-size: 1.25rem;
+}
+
+.list {}
+
+.list__item {
+	padding-block: 0.625rem;
+	font-size: 1.25rem;
+
+}
+
+.button-lesson-5 {
+	width: 4.375rem;
+	color: white;
+	background-color: green;
+	border-radius: 0.3125rem;
+}
+
+.button-lesson-5:not(:last-child) {
+	margin-bottom: 0.625rem;
+}
+
+table {
+	/* border-collapse: collapse; */
+	border: 1px solid black;
+}
+
+th {
+	border: 1px solid black;
+}
+
+td {
+	border: 1px solid black;
+	/* padding: 20px; */
+}
+
+
+/* Lesson 19 */
+.task-1-body__text--red {
+	color: red;
+}
+
+.task-2-body {
+	display: inline-flex;
+	gap: 0.625rem;
+	flex-direction: column;
+}
+
+.task-2-body__input:last-child {
+	margin-bottom: 0.625rem;
+}
+
+.task-3-body {
+	display: inline-flex;
+	flex-direction: row;
+	gap: 0.625rem;
+}
+
+.ol-list--green {
+	color: green;
+}
+
+.ol-list--red {
+	color: red;
+}
