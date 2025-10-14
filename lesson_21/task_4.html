@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="css/style.css">
+		<title>lesson_21</title>
+	</head>
+	<body>
+		<h2>Задача №4</h2>
+		<p class="task-text">
+			Користувач задає місяць навчання учня
+			(перевіряти чи є числом, чи від 1 до 12, чи не канікули)
+			та оцінку (перевіряти чи є числом, чи від 1 до 100).
+			Вивести чи зможе він виправити оцінку
+			(якщо оцінка погана і це не останній місяць у семестрі) .
+			Обробку усіх помилок зробити з використанням відповідних класів.
+		</p>
+		<div class="task-body">
+			<label class="task-body__label-date" for="input-date">
+				Введіть місяць навчання:
+				<input id="input-date" class="task-body__input-date" type="number"
+					value="9">
+			</label>
+			<label class="task-body__label-grade" for="input-grade">
+				Введіть оцінку:
+				<input id="input-grade" class="task-body__input-grade" value="50"
+					type="number">
+			</label>
+			<button class="task-body__button">Отримати результат</button>
+			<div class="task-body__result">
+				Чи можливо виправити оцінку -
+				<span class="task-body__span-result"></span>
+			</div>
+		</div>
+		<!-- ============================================================================================== -->
+
+		<script src="js/task_4.js"></script>
+		<br>
+		<a href="index.html" class="link-back">
+			Повернутися
+		</a>
+	</body>
+</html>

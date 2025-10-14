@@ -1,0 +1,83 @@
+body {
+	background-color: #dadada;
+}
+
+.go-home {
+	font-size: 1.25rem;
+}
+
+p {
+	font-size: 1.25rem;
+	margin: 0.625rem;
+
+}
+
+.task-text {
+	font-weight: 600;
+}
+
+.link-back {
+	font-weight: 600;
+	font-size: 1.25rem;
+}
+
+.list {}
+
+.list__item {
+	padding-block: 0.625rem;
+	font-size: 1.25rem;
+
+}
+
+.button-lesson-5 {
+	width: 4.375rem;
+	color: white;
+	background-color: green;
+	border-radius: 0.3125rem;
+}
+
+.button-lesson-5:not(:last-child) {
+	margin-bottom: 0.625rem;
+}
+
+table {
+	/* border-collapse: collapse; */
+	border: 1px solid black;
+}
+
+th {
+	border: 1px solid black;
+}
+
+td {
+	border: 1px solid black;
+	/* padding: 20px; */
+}
+
+
+/* Lesson 21 */
+.task-body {
+	display: flex;
+	flex-direction: column;
+	gap: 0.9375rem;
+}
+
+.task-body__label-date {}
+
+.task-body__input-date {}
+
+.task-body__label-grade {}
+
+.task-body__input-grade {}
+
+.task-body__button {
+	max-width: 30%;
+}
+
+.task-body__result {}
+
+.task-body__span-result {}
+
+.ask-body__span-result--error {
+	color: red;
+}
