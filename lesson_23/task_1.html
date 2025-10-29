@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="css/style.css">
+		<title>lesson_22</title>
+	</head>
+	<body>
+		<div class="task-body">
+			<script>
+				if (confirm('Почати тестування ?')) {
+//------------------------------------------------------------------------------------------------
+	document.write(`<strong>Задача 1</strong><p> 
+Дано клас PhoneNumber. 
+Створити функцію перетворення до string, 
+при якому на основі номера виводиться оператор (050….   MTC, 096…  Kyivstar, ….)</p> <br>`)
+
+class PhoneNumber{
+	constructor(number){
+		this.number = number.toString().trim()
+	}
+	operatorCode(){
+		const c = this.number.substr(0,3)
+		return c
+	}
+	[Symbol.toPrimitive](hint){
+		const code = this.operatorCode()
+		let operatorName
+		switch (code)
+		{
+			case '050':
+			case '066':
+			case '095':
+			case '099':
+				operatorName = 'MTC'
+				break;
+			case '067':
+			case '096':
+			case '097':
+			case '098':
+				operatorName = 'Kyivstar'
+				break;
+			case '063':
+			case '073':
+			case '093':
+				operatorName = 'lifecell'
+				break;
+				default:
+			operatorName = 'Не вірні данні'
+				break;
+		}
+		return `Номер ${this.number} - ${operatorName}`
+		}
+	}
+
+
+const s = new PhoneNumber('  0502535145')
+const p = new PhoneNumber('0673335599  ')
+const k = new PhoneNumber('0732228844')
+const l = new PhoneNumber(953651+6)
+
+document.write(`${s}<br>${p}<br>${k}<br>${l}`)
+
+	document.write(`<hr>`)
+	//------------------------------------------------------------------------------------------------
+	document.write(`<strong>Задача 2</strong><p> 
+Дано Shop  -- клас, що містить список товарів 
+(масив об’єктів класу Product (назва, ціна, кількість одиниць). 
+Додати можливість ітератора до класу Shop, 
+щоб при ітеруванні для кожного елемента виводився рядок 
+«товар-загальна вартість»</p> <br>`)
+
+class Product{
+	constructor(name, price, quantity){
+		this.name = name
+		this.price = price
+		this.quantity = quantity
+	}
+	totalPrice(){
+		return this.price * this.quantity
+	}
+}
+
+class Shop{
+	constructor(products){
+		this.products = products
+	}
+	*[Symbol.iterator](){
+		for (let i = 0; i < this.products.length; i++) {
+			yield `${this.products[i].name} - ${this.products[i].totalPrice()} грн.`
+		}
+	}
+	// [Symbol.iterator](){
+	// 	this.currentIndex = 0
+	// 	return this
+	// }
+	// next(){
+	// 	if (this.currentIndex<this.products.length) {
+	// 		const product = this.products[this.currentIndex++]
+	// 		return {done:false, value: `${product.name} - ${product.totalPrice()} грн.` }
+	// 	}
+	// 	else return {done:true}
+	// }
+}
+
+let products = new Shop([
+	new Product("Ноутбук HP", 1500, 2),
+	new Product("Монітор Dell", 450, 5),
+	new Product("Клавіатура Logitech", 75, 10),
+	new Product("Миша A4Tech", 20, 30),
+])
+
+for (const el of products) {
+	document.write(`${el} <br>`)
+}
+
+	document.write(`<hr>`)
+		//------------------------------------------------------------------------------------------------
+	document.write(`<strong>Задача 3</strong><p> 
+Створити генератор, 
+який би випадковим чином поступово генерував вказану 
+кількість парних чисел.</p> <br>`)
+
+function* randomPairNumber(count){
+	for (let i = 0; i < count; i++) {
+		yield Math.floor(Math.random() * 50) * 2
+	}
+}
+
+for (const el of randomPairNumber(10)) {
+	document.write(`${el} <br>`)
+}
+
+	document.write(`<hr>`)
+//------------------------------------------------------------------------------------------------
+	document.write(`<strong>Задача 5</strong><p> 
+Дано список з віком учнів. 
+Підрахувати скільки разів кожне значення 
+зустрічається у списку і максимальне.</p> <br>`)
+
+const listStudentsAge = [25,22,20,23,21,24,20,25,22,20]
+
+const mapListStudentsAge = new Map()
+
+for (const el of listStudentsAge) {
+	if(mapListStudentsAge.has(el)) mapListStudentsAge.set(el, mapListStudentsAge.get(el)+1)
+	else mapListStudentsAge.set(el, 1)
+}
+
+for (const [key, value] of mapListStudentsAge) {
+	document.write(`Вік ${key} Кількість входжень ${value}<br>`)
+}
+
+let maxAge = Math.max(...mapListStudentsAge.keys())
+
+document.write(`Максимальний вік - ${maxAge}`)
+
+// for (const el of mapListStudentsAge.keys()) {
+// 	if (maxAge<el) {
+// 		maxAge = el
+// 	}
+// }
+// document.write(`Максимальний вік - ${maxAge}`)
+
+	document.write(`<hr>`)
+//------------------------------------------------------------------------------------------------
+	document.write(`<strong>Задача 6</strong><p> 
+Дано масив книг (назва, рік видання, автор). 
+Підрахувати кількість книг для кожного автора.</p> <br>`)
+
+const bookArray = [
+	{ "назва": "Кобзар", "рік": 1840, "автор": "Тарас Шевченко" },
+	{ "назва": "Лісова пісня", "рік": 1911, "автор": "Леся Українка" },
+	{ "назва": "Маруся Чурай", "рік": 1979, "автор": "Ліна Костенко" },
+	{ "назва": "Гайдамаки", "рік": 1841, "автор": "Тарас Шевченко" },
+	{ "назва": "Украдене щастя", "рік": 1893, "автор": "Іван Франко" },
+	{ "назва": "Записки українського самашедшого", "рік": 2010, "автор": "Ліна Костенко" },
+	{ "назва": "Захар Беркут", "рік": 1883, "автор": "Іван Франко" }
+]
+
+const mapBookArray = new Map()
+
+for (const el of bookArray) {
+	if(mapBookArray.has(el.автор)) mapBookArray.set(el.автор, mapBookArray.get(el.автор)+1)
+	else mapBookArray.set(el.автор, 1)
+}
+
+for (const [key, value] of mapBookArray) {
+	document.write(`Автор: ${key} Кількість книг: ${value}<br>`)
+}
+
+	document.write(`<hr>`)
+	//------------------------------------------------------------------------------------------------
+		document.write(`<strong>Задача 7</strong><p> 
+Дано інформацію про відвідувачів деякого сайту 
+(для кожного відвідувача зберігається логін). 
+Підрахувати для кожного клієнта кількість відвідувань.</p> <br>`)
+const logins = [
+	'alex',
+	'user123',
+	'ninja',
+	'alex',
+	'guest',
+	'alex',
+	'ninja',
+	'user123',
+	'user123',
+	'guest'
+]
+
+const userEntrance = new Map()
+
+for (const el of logins) {
+	if (userEntrance.has(el)) userEntrance.set(el, userEntrance.get(el)+1)
+	else userEntrance.set(el, 1)
+}
+
+userEntrance.forEach((value, key) => {
+	document.write(`${key} - ${value} <br>`)
+});
+
+	document.write(`<hr>`)
+//------------------------------------------------------------------------------------------------
+		document.write(`<strong>Задача 8</strong><p> 
+Дано масив студентів (піб, курс, факультет). 
+Підрахувати кількість різних факультетів, 
+та кількість студентів кожного з курсів. </p> <br>`)
+const studentsArray = [
+	{
+		"pib": "Іваненко І.І.",
+		"course": 2,
+		"faculty": "ФІОТ"
+	},
+	{
+			"pib": "Петренко П.П.",
+			"course": 3,
+			"faculty": "ФММ"
+	},
+	{
+		"pib": "Сидорова С.С.",
+		"course": 2,
+		"faculty": "ФІОТ"
+	},
+	{
+		"pib": "Коваленко К.К.",
+		"course": 1,
+		"faculty": "ФММ"
+	},
+	{
+		"pib": "Мельник М.М.",
+		"course": 4,
+		"faculty": "ФЕЛ"
+	},
+	{
+		"pib": "Олійник О.О.",
+		"course": 3,
+		"faculty": "ФІОТ"
+	},
+	{
+		"pib": "Ткаченко Т.Т.",
+		"course": 1,
+		"faculty": "ФЕЛ"
+	}
+]
+
+const countFaculty = new Map()
+for (const el of studentsArray) {
+	if (!countFaculty.has(el.faculty)) {
+		countFaculty.set(el.faculty, 1)
+	}
+}
+document.write(`Кількість різних факультетів = ${countFaculty.size} <br>`)
+
+const countStudentsCurse = new Map()
+for (const el of studentsArray) {
+	if (countStudentsCurse.has(el.course)) countStudentsCurse.set(el.course, countStudentsCurse.get(el.course)+1)
+	else countStudentsCurse.set(el.course, 1)
+}
+
+countStudentsCurse.forEach((value, key) => {
+	document.write(`На ${key} курсі ${value} студентів <br>`)
+});
+
+	document.write(`<hr>`)
+//------------------------------------------------------------------------------------------------
+document.write(`<strong>Задача 9</strong><p> 
+Дано масив показів температур. 
+Підрахувати кількість входжень кожного із показів.
+Заокруглити вверх значення та підрахувати кількість різних показів. </p> <br>`)
+const temperatures = [12.4, 24.9, 10.6, 12.4, 24.9, 12.4, 10.6, 11.9]
+
+const mapTemp = new Map()
+for (const el of temperatures) {
+	if (mapTemp.has(el)) {
+		mapTemp.set(el, mapTemp.get(el)+1)
+	}
+	else {mapTemp.set(el, 1)}
+}
+for (const [key, value] of mapTemp) {
+	document.write(`Показник - ${key}, кількість входжень - ${value} <br>`)
+}
+
+const mapTempRound = new Map()
+for (const el of temperatures) {
+	const elNumber = Math.ceil(el)
+	if (mapTempRound.has(elNumber)) {
+		mapTempRound.set(elNumber, mapTempRound.get(elNumber)+1)
+	}
+	else {mapTempRound.set(elNumber, 1)}
+}
+document.write(`Кількість різних показів(заокруглених) - ${mapTempRound.size}`)
+
+	document.write(`<hr>`)
+//------------------------------------------------------------------------------------------------
+document.write(`<strong>Задача 10</strong><p> 
+Дано два списки прізвищ студентів, 
+що відвідують гуртки з математики і історії. 
+Підрахувати скільки студентів з гуртка з історії також відвідують 
+гурток з математики. 
+Також підрахувати скільки всього студентів відвідують хоча б один гурток. </p> <br>`)
+
+const mathStudents = ["Іваненко", "Петренко", "Сидоренко", "Ковальчук", "Мельник"]
+const historyStudents = ["Сидоренко", "Кравченко", "Мельник", "Ткаченко", "Іваненко"]
+
+const s1 = new Set(mathStudents)
+const s2 = new Set(historyStudents)
+
+const obj = s1.intersection(s2)
+
+document.write(`Відвідують два гуртки ${obj.size} студентів : <br>`)
+
+for (const stud of obj) {
+	document.write(`${stud} <br>`)
+}
+
+const allStudents = s1.union(s2)
+
+document.write(`<br> Відвідують хоча б один гурток ${allStudents.size} студентів: <br>`)
+
+for (const stud of allStudents) {
+	document.write(`${stud} <br>`)
+}
+
+	document.write(`<hr>`)
+//------------------------------------------------------------------------------------------------
+	 }
+			</script>
+		</div>
+		<!-- ============================================================================================== -->
+		<br>
+		<a href="index.html" class="link-back">
+			Повернутися
+		</a>
+	</body>
+</html>
